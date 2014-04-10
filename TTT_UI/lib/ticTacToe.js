@@ -1,15 +1,16 @@
 // NB: This doesn't include any AI.
 
 (function (root) {
-  if (!(typeof(require) === "undefined")) {
-    _ = require('./underscore.js');
-  }
 
-  var readline = require('readline');
-  var READER = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  // if (!(typeof(require) === "undefined")) {
+ //    // _ = require('./underscore.js');
+ //  }
+
+  // var readline = require('readline');
+  // var READER = readline.createInterface({
+  //   input: process.stdin,
+  //   output: process.stdout
+  // });
 
   var TTT = root.TTT = (root.TTT || {});
 

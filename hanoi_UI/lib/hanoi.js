@@ -74,7 +74,7 @@
   }
 })(this);
 
-// this.Hanoi.Game is a constructor function, so we instantiate a new object, then run it.
+// this.Hanoi.Game is a constructor function, so we instantiate a new object, then run it:
 
-var Game = new this.Hanoi.Game();
-Game.run();
+// var Game = new this.Hanoi.Game();
+// Game.run();
