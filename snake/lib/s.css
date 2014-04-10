@@ -7,3 +7,9 @@ html, body {
   font: inherit;
 
 }
+
+* {
+
+  font-family: courier;
+
+}
