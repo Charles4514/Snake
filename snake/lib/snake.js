@@ -8,7 +8,7 @@
 
   Snake.DIRECTIONS = ["N", "E", "S", "W"];
 
-  Snake.prototype.move = function(){
+  Snake.prototype.move = function(board){
     var dCoord;
 
     switch(this.dir) {
@@ -31,13 +31,28 @@
 
     var addedCoord = this.segments[this.segments.length - 1].plus(dCoord);
 
-    var new_segs = this.segments.slice(1).concat([addedCoord]);
-    this.segments = new_segs;
-
+    if ((board.apple.coord.x === addedCoord.x) && (board.apple.coord.y === addedCoord.y)) {
+      board.newApple();
+      this.segments.push(addedCoord);
+      console.log(this.segments);
+    } else {
+      var new_segs = this.segments.slice(1).concat([addedCoord]);
+      this.segments = new_segs;
+    };
   };
 
   Snake.prototype.turn = function(dir){
     this.dir = dir;
   };
+
+  Snake.prototype.includesSegment = function(coord){
+    var includes = false;
+
+    this.segments.forEach(function(el){
+      if (el.isEqualTo(coord)) includes = true;
+    })
+
+    return includes;
+  }
 
 })(this);

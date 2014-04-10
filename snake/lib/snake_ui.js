@@ -18,7 +18,7 @@
 
     var gameStep = setInterval(function(){
       console.log("Interval!");
-      thatSnake.move();
+      thatSnake.move(thatBoard);
       thatBoard.render();
     }, 500);
 
