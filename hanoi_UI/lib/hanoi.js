@@ -8,8 +8,10 @@
   // });
 
   var Game = Hanoi.Game = function () {
+
     this.towers = [[3, 2, 1], [], []];
     this.ui = new Hanoi.TowerUI(this);
+
   };
 
   Game.prototype.turn = function () {
@@ -22,6 +24,7 @@
   };
 
   Game.prototype.isValidMove = function (startTowerIdx, endTowerIdx) {
+
     var startTower = this.towers[startTowerIdx];
     var endTower = this.towers[endTowerIdx];
 
@@ -34,39 +37,35 @@
       var topEndDisc = endTower[endTower.length - 1];
       return topStartDisc < topEndDisc;
     }
+
   };
 
   Game.prototype.move = function (startTowerIdx, endTowerIdx) {
+
     if (this.isValidMove(startTowerIdx, endTowerIdx)) {
       this.towers[endTowerIdx].push(this.towers[startTowerIdx].pop());
       return true;
     } else {
       return false;
     }
+
   };
 
   Game.prototype.run = function () {
-    var game = this;
-
-    // READER.question("Enter a starting tower: ",function (start) {
-    //   var startTowerIdx = parseInt(start);
-    //   READER.question("Enter an ending tower: ", function (end) {
-    //     var endTowerIdx = parseInt(end);
-    //     game.takeTurn(startTowerIdx,endTowerIdx);
-    //   });
-    // });
+    ;
   };
 
-  Game.prototype.takeTurn = function (start,end){
+  Game.prototype.takeTurn = function (start, end){
+
     var game = this;
+    console.log(start);
+    console.log(end);
 
-    if (!(game.move(start,end))) alert("Invalid move!");
+    if (!(game.move(start, end))) alert("Invalid move!");
 
-    if (game.isWon()) alert("You win!");
   }
 })(this);
 
 // this.Hanoi.Game is a constructor function, so we instantiate a new object, then run it:
 
 var hanoi = new this.Hanoi.Game();
-// Game.run();

@@ -45,19 +45,19 @@ section ul:last-of-type {
 }
 
 .highlight {
-  border-bottom: 10px solid red;
+  border-bottom: 10px solid #FF7030;
 }
 
 li {
   float: left;
   display: block;
-  margin-top: 10px;
+  padding-top: 10px;
   width: 200px;
   height: 75px;
 }
 
 div {
-  background-color: brown;
+  background-color: #983002;
   margin: auto;
   height: 75px;
 }
