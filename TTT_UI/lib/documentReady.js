@@ -4,7 +4,7 @@ $(document).ready(function(){
     var $target = $(event.target);
     var $targetId = $target.attr('id');
 
-    $target.html(TTT.player);
+    if ($target.html() === "") $target.html(TTT.player);
 
     TTT.turn($targetId, function(){
       if (TTT.winner()) {
