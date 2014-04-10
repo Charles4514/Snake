@@ -1,16 +1,4 @@
-// NB: This doesn't include any AI.
-
 (function (root) {
-
-  // if (!(typeof(require) === "undefined")) {
- //    // _ = require('./underscore.js');
- //  }
-
-  // var readline = require('readline');
-  // var READER = readline.createInterface({
-  //   input: process.stdin,
-  //   output: process.stdout
-  // });
 
   var TTT = root.TTT = (root.TTT || {});
 
@@ -104,8 +92,6 @@
   };
 
   Game.prototype.valid = function (pos) {
-    // Check to see if the co-ords are on the board and the spot is
-    // empty.
 
     function isInRange (pos) {
       return (0 <= pos) && (pos < 3);
@@ -141,51 +127,20 @@
     );
   };
 
-  Game.prototype.printBoard = function () {
-    var game = this;
+  Game.prototype.turn = function ($targetId, callback) {
 
-    game.board.forEach(function(row){
-      var first = row[0] == null ? " " : row[0];
-      var second = row[1] == null ? " " : row[1];
-      var third = row[2] == null ? " " : row[2];
+    var coords = [
 
-      console.log(first + " | " + second + " | " + third);
-    })
+      parseInt($targetId[0]),
+      parseInt($targetId[1])
+
+    ];
+
+    this.move(coords);
+    callback();
+
   }
 
-  Game.prototype.run = function () {
-    var game = this;
-
-    game.turn(function(){
-      if (game.winner()) {
-        console.log("Someone won!");
-        READER.close();
-      } else {
-        game.printBoard();
-        game.run();
-      }
-    });
-  }
-
-  Game.prototype.turn = function (callback) {
-    var game = this;
-
-    READER.question("Enter coordinates like [row,column]: ",function(strCoords){
-      var coords = eval(strCoords); // Totally insecure way to parse the string "[1,2]" into the array [1,2].
-      if (game.valid(coords)) {
-        game.move(coords);
-        callback();
-      } else {
-        console.log("Invalid coords!");
-        game.turn(callback);
-      }
-    });
-  }
 })(this);
 
-
-// First we instantiate a new object with the this.TTT.Game() constructor function.
 var TTT = new this.TTT.Game();
-
-// Then we enter the game's run loop.
-TTT.run();
